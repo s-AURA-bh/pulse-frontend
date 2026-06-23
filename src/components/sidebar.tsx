@@ -100,23 +100,55 @@ export function Sidebar({ onNavigate, mobile = false }: SidebarProps) {
         <p className="mt-2 text-[10px] leading-relaxed text-zinc-600">
           2,487 moments connected across your journey.
         </p>
-      </div>
+        </div>
 
-      <button
-        className="flex w-full items-center gap-3 rounded-xl p-2 text-left transition-colors hover:bg-white/[.04]"
-        type="button"
-      >
-        <Avatar initials="SY" />
-        <span className="min-w-0 flex-1">
-          <span className="block truncate text-xs font-medium text-zinc-300">
-            Saurabh Yadav
-          </span>
-          <span className="block truncate text-[10px] text-zinc-600">
-            Personal workspace
-          </span>
-        </span>
-        <ChevronDown className="h-3.5 w-3.5 text-zinc-600" />
-      </button>
-    </aside>
+ <div className="rounded-xl border border-white/[.06] bg-white/[.02] p-2">
+  <button
+    className="flex w-full items-center gap-3 rounded-xl p-2 text-left transition-colors hover:bg-white/[.04]"
+    type="button"
+  >
+    <Avatar initials="SY" />
+
+    <span className="min-w-0 flex-1">
+      <span className="block truncate text-xs font-medium text-zinc-300">
+        Saurabh Yadav
+      </span>
+
+      <span className="block truncate text-[10px] text-zinc-600">
+        Personal workspace
+      </span>
+    </span>
+
+    <ChevronDown className="h-3.5 w-3.5 text-zinc-600" />
+  </button>
+
+  <div className="mt-2 border-t border-white/[.06] pt-2 space-y-1">
+    <Link
+      href="/login"
+      className="block rounded-lg px-3 py-2 text-xs text-zinc-300 hover:bg-white/[.04]"
+    >
+      Login
+    </Link>
+
+    <Link
+      href="/register"
+      className="block rounded-lg px-3 py-2 text-xs text-zinc-300 hover:bg-white/[.04]"
+    >
+      Register
+    </Link>
+
+    <button
+      type="button"
+      onClick={() => {
+        localStorage.removeItem("access_token");
+        window.location.href = "/login";
+      }}
+      className="block w-full rounded-lg px-3 py-2 text-left text-xs text-red-400 hover:bg-white/[.04]"
+    >
+      Logout
+    </button>
+  </div>
+</div>
+        </aside>
   );
 }
