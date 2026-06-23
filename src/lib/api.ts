@@ -41,15 +41,21 @@ export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
 }
 
 export async function login(email: string, password: string): Promise<string> {
-  const form = new URLSearchParams();
-  form.set("username", email);
-  form.set("password", password);
   const response = await fetch(`${API_BASE_URL}/auth/login`, {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: form
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
   });
+
   const data = await parseResponse<{ access_token: string }>(response);
+
   localStorage.setItem("access_token", data.access_token);
+
   return data.access_token;
 }
+
