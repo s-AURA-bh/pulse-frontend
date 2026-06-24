@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { PulseLogo } from "@/components/pulse-logo";
+import { useState } from "react";
+import { useAuth } from "@/lib/auth";
 
 interface SidebarProps {
   onNavigate?: () => void;
@@ -17,6 +19,8 @@ interface SidebarProps {
 
 export function Sidebar({ onNavigate, mobile = false }: SidebarProps) {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const { user } = useAuth();
 
   return (
     <aside
@@ -106,12 +110,13 @@ export function Sidebar({ onNavigate, mobile = false }: SidebarProps) {
   <button
     className="flex w-full items-center gap-3 rounded-xl p-2 text-left transition-colors hover:bg-white/[.04]"
     type="button"
+    onClick={() => setOpen(!open)}
   >
     <Avatar initials="SY" />
 
     <span className="min-w-0 flex-1">
       <span className="block truncate text-xs font-medium text-zinc-300">
-        Saurabh Yadav
+        {user?.name || "User"}
       </span>
 
       <span className="block truncate text-[10px] text-zinc-600">
@@ -121,7 +126,8 @@ export function Sidebar({ onNavigate, mobile = false }: SidebarProps) {
 
     <ChevronDown className="h-3.5 w-3.5 text-zinc-600" />
   </button>
-
+   
+  {open && (
   <div className="mt-2 border-t border-white/[.06] pt-2 space-y-1">
     <Link
       href="/login"
@@ -148,7 +154,4 @@ export function Sidebar({ onNavigate, mobile = false }: SidebarProps) {
       Logout
     </button>
   </div>
-</div>
-        </aside>
-  );
-}
+)}
