@@ -116,7 +116,7 @@ export function Sidebar({ onNavigate, mobile = false }: SidebarProps) {
 
     <span className="min-w-0 flex-1">
       <span className="block truncate text-xs font-medium text-zinc-300">
-        {user?.name || "User"}
+        {user?.full_name || user?.username || "User"}
       </span>
 
       <span className="block truncate text-[10px] text-zinc-600">
@@ -155,3 +155,7 @@ export function Sidebar({ onNavigate, mobile = false }: SidebarProps) {
     </button>
   </div>
 )}
+       </div>
+  </aside>
+);
+}
