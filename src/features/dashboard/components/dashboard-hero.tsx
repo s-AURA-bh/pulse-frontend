@@ -4,8 +4,16 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, PenLine, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 export function DashboardHero() {
+  const [name, setName] = useState("User");
+
+  useEffect(() => {
+    const savedName = localStorage.getItem("user_name");
+    if (savedName) setName(savedName);
+  }, []);
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 12 }}
@@ -34,7 +42,6 @@ export function DashboardHero() {
             </span>
           </div>
           <h1 className="text-[30px] font-medium tracking-[-0.04em] text-zinc-100 sm:text-[38px] lg:text-[42px]">
-            Welcome back, Saurabh
           </h1>
           <p className="mt-3 text-[15px] leading-relaxed text-zinc-500 sm:text-base">
             You&apos;ve been building your future for{" "}
@@ -42,6 +49,7 @@ export function DashboardHero() {
           </p>
           <p className="mt-1 text-sm text-zinc-600">
             Keep the rhythm. The small things are beginning to compound.
+            Welcome back, {name}
           </p>
 
           <div className="mt-7 flex flex-wrap gap-3">

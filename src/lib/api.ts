@@ -51,10 +51,14 @@ export async function login(email: string, password: string): Promise<string> {
       password,
     }),
   });
+  const data = await parseResponse<{
+  access_token: string;
+  name: string;
+}>(response);
 
-  const data = await parseResponse<{ access_token: string }>(response);
 
   localStorage.setItem("access_token", data.access_token);
+  localStorage.setItem("user_name", data.name);
 
   return data.access_token;
 }
