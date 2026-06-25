@@ -11,8 +11,11 @@ interface DashboardHeroProps {
 }
 
 export function DashboardHero({ user }: DashboardHeroProps) {
-const name = user?.full_name || user?.username || "User";
-
+const name =
+  user?.name ||
+  user?.full_name ||
+  user?.username ||
+  "User";
 const joinedDays = user?.created_at
   ? Math.max(
       1,

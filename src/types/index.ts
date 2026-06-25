@@ -1,13 +1,11 @@
 export type User = {
   id: number;
   email: string;
-  username: string;
-  full_name: string | null;
+  name?: string;
+  username?: string;
+  full_name?: string | null;
   created_at: string;
-  total_videos?: number;
-  total_views?: number;
 };
-
 export type Category = {
   id: number;
   name: string;
