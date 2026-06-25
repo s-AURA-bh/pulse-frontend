@@ -5,6 +5,9 @@ export type User = {
   username?: string;
   full_name?: string | null;
   created_at: string;
+
+  total_videos?: number;
+  total_views?: number;
 };
 export type Category = {
   id: number;
