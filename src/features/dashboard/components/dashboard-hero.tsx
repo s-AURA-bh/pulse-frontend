@@ -4,16 +4,24 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, PenLine, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import React from "react";
 
-export function DashboardHero() {
-  const [name, setName] = useState("User");
+interface DashboardHeroProps {
+  user: any;
+}
 
-  useEffect(() => {
-    const savedName = localStorage.getItem("user_name");
-    if (savedName) setName(savedName);
-  }, []);
+export function DashboardHero({ user }: DashboardHeroProps) {
+const name = user?.full_name || user?.username || "User";
 
+const joinedDays = user?.created_at
+  ? Math.max(
+      1,
+      Math.floor(
+        (Date.now() - new Date(user.created_at).getTime()) /
+          (1000 * 60 * 60 * 24)
+      )
+    )
+  : 0;
   return (
     <motion.section
       initial={{ opacity: 0, y: 12 }}
@@ -38,7 +46,11 @@ export function DashboardHero() {
           <div className="mb-5 flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#8b83ff] shadow-[0_0_12px_#8b83ff]" />
             <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-zinc-500">
-              Saturday · June 20
+              {new Date().toLocaleDateString("en-US", {
+                weekday: "long",
+                month: "long",
+                day: "numeric",
+              })}
             </span>
           </div>
           <h1 className="text-[30px] font-medium tracking-[-0.04em] text-zinc-100 sm:text-[38px] lg:text-[42px]">
@@ -46,7 +58,7 @@ export function DashboardHero() {
           </h1>
           <p className="mt-3 text-[15px] leading-relaxed text-zinc-500 sm:text-base">
             You&apos;ve been building your future for{" "}
-            <span className="font-medium text-zinc-300">127 days.</span>
+          <span className="font-medium text-zinc-300">{joinedDays} days.</span> 
           </p>
           <p className="mt-1 text-sm text-zinc-600">
             Keep the rhythm. The small things are beginning to compound.

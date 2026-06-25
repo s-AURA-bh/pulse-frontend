@@ -9,11 +9,13 @@ import { DiaryPreview } from "@/features/dashboard/components/diary-preview";
 import { WeeklyReflection } from "@/features/dashboard/components/weekly-reflection";
 import { LearningActivity } from "@/features/dashboard/components/learning-activity";
 import { TimelineSnapshot } from "@/features/dashboard/components/timeline-snapshot";
+import { useAuth } from "@/lib/auth";
 
 export function Dashboard() {
+  const { user } = useAuth();
   return (
     <div className="mx-auto w-full max-w-[1440px] px-4 py-5 sm:px-6 sm:py-7 lg:px-8 lg:py-8 xl:px-10">
-      <DashboardHero />
+      <DashboardHero user={user} />
 
       <section className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {dashboardMetrics.map((metric, index) => (
