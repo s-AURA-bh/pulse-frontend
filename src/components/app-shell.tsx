@@ -6,7 +6,6 @@ import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 import { Bell, Menu, Search, X } from "lucide-react";
 import { navigation } from "@/lib/navigation";
 import { useKeyboardShortcut } from "@/hooks/use-keyboard-shortcut";
-import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { CommandMenu } from "@/components/command-menu";
 import { PulseLogo } from "@/components/pulse-logo";
@@ -115,7 +114,6 @@ export function AppShell({ children }: { children: ReactNode }) {
               <Bell className="h-[18px] w-[18px]" />
               <span className="absolute right-2.5 top-2.5 h-1.5 w-1.5 rounded-full bg-[#8b83ff] ring-2 ring-[#09090c]" />
             </Button>
-            <Avatar initials="SY" className="ml-1 h-8 w-8 rounded-[10px] text-[10px] lg:hidden" />
           </header>
 
           <main className="min-h-[calc(100vh-4rem)] overflow-hidden">
