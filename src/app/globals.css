@@ -13,16 +13,14 @@
 }
 
 html {
-  background: #09090c;
+  background: #030304;
   scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background:
-    radial-gradient(circle at 72% -10%, rgba(103, 91, 235, 0.035), transparent 28%),
-    #09090c;
+  background: #030304;
   color: #f4f4f5;
   font-family:
     Inter, "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
@@ -42,7 +40,7 @@ button {
 }
 
 ::selection {
-  background: rgba(139, 131, 255, 0.28);
+  background: rgba(255, 207, 131, 0.24);
   color: #fff;
 }
 
@@ -80,6 +78,39 @@ button {
   );
   content: "";
   pointer-events: none;
+}
+
+.time-capsule-shell {
+  isolation: isolate;
+}
+
+.time-capsule-shell::before {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 42%, transparent 0%, transparent 36%, rgba(0, 0, 0, 0.48) 76%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045), transparent 18%, transparent 74%, rgba(0, 0, 0, 0.72));
+  content: "";
+}
+
+.time-capsule-shell::after {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  content: "";
+}
+
+.time-capsule-copy {
+  text-shadow:
+    0 0 22px rgba(255, 255, 255, 0.12),
+    0 0 64px rgba(255, 203, 112, 0.16),
+    0 24px 120px rgba(0, 0, 0, 0.75);
 }
 
 @media (prefers-reduced-motion: reduce) {

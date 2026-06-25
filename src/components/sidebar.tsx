@@ -29,9 +29,15 @@ export function Sidebar({ onNavigate, mobile = false }: SidebarProps) {
         !mobile && "fixed inset-y-0 left-0 z-30 hidden lg:flex"
       )}
     >
-      <div className="flex h-12 items-center px-2">
-        <PulseLogo />
-      </div>
+     <div className="flex h-12 items-center px-2">
+       <button
+         type="button"
+         onClick={() => setOpen(!open)}
+         className="cursor-pointer"
+        >
+         <PulseLogo />
+        </button>
+     </div>
 
       <Button
         variant="secondary"
@@ -112,7 +118,7 @@ export function Sidebar({ onNavigate, mobile = false }: SidebarProps) {
     type="button"
     onClick={() => setOpen(!open)}
   >
-    <Avatar initials="SY" />
+    <PulseLogo />
 
     <span className="min-w-0 flex-1">
       <span className="block truncate text-xs font-medium text-zinc-300">
