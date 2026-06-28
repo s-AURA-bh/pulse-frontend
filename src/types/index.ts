@@ -40,3 +40,9 @@ export type WatchResponse = {
   video: Video;
   related: Video[];
 };
+export type Goal = {
+  id: number;
+  title: string;
+  description?: string | null;
+  completed: boolean;
+};

@@ -62,4 +62,38 @@ export async function login(email: string, password: string): Promise<string> {
 
   return data.access_token;
 }
+import type { Goal } from "@/types";
+
+export async function getGoals(): Promise<Goal[]> {
+  return api<Goal[]>("/goals");
+}
+
+export async function createGoal(
+  title: string,
+  description?: string
+): Promise<Goal> {
+  return api<Goal>("/goals", {
+    method: "POST",
+    body: JSON.stringify({
+      title,
+      description,
+    }),
+  });
+}
+
+export async function updateGoal(
+  id: number,
+  data: Partial<Goal>
+): Promise<Goal> {
+  return api<Goal>(`/goals/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+  });
+}
+
+export async function deleteGoal(id: number) {
+  return api(`/goals/${id}`, {
+    method: "DELETE",
+  });
+}
 
