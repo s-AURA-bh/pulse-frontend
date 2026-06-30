@@ -46,3 +46,8 @@ export type Goal = {
   description?: string | null;
   completed: boolean;
 };
+export type Note = {
+  id: number;
+  title: string;
+  content: string;
+};

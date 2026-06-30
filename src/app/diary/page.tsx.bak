@@ -1,0 +1,27 @@
+"use client";
+
+import { useState } from "react";
+import { BookOpenText } from "lucide-react";
+import { FeaturePage } from "@/features/shell/feature-page";
+import { useDiary } from "@/features/diary/hooks/use-diary";
+
+export default function DiaryPage() {
+const { entries } = useDiary();
+const [open, setOpen] = useState(false);
+  return (
+    <FeaturePage
+      title="A quieter place to think."
+      eyebrow="Personal diary"
+      description="Capture the days as they feel—not just as they happened. Your private record for clarity, patterns, and the thoughts worth returning to."
+      icon={BookOpenText}
+      primaryAction="New entry"
+      onPrimaryAction={() => setOpen(true)}
+      highlights={[
+        { label: "Entries", value: "84", detail: "Across 127 days" },
+        { label: "Current rhythm", value: "12 days", detail: "Longest: 24 days" },
+        { label: "Most felt", value: "Calm", detail: "Appeared in 31 entries" }
+      ]}
+      futureNote="Future AI reflections can surface emotional patterns and meaningful connections while keeping the diary experience calm and private."
+    />
+  );
+}

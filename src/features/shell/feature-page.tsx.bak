@@ -1,7 +1,6 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Plus, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +16,6 @@ interface FeaturePageProps {
   highlights: Array<{ label: string; value: string; detail: string }>;
   futureNote: string;
   onPrimaryAction?: () => void;
-  children?: ReactNode;
 }
 
 export function FeaturePage({
@@ -28,8 +26,7 @@ export function FeaturePage({
   primaryAction,
   highlights,
   futureNote,
-  onPrimaryAction,
-  children,
+  onPrimaryAction
 }: FeaturePageProps) {
   return (
     <div className="mx-auto w-full max-w-[1440px] px-4 py-6 sm:px-6 lg:px-10 lg:py-9">
@@ -87,20 +84,18 @@ export function FeaturePage({
         ))}
       </div>
 
-      {children ?? (
-        <Card className="mt-4 flex min-h-[280px] flex-col items-center justify-center border-dashed bg-[#0e0e13] px-6 text-center">
-          <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/[.07] bg-white/[.035]">
-            <Sparkles className="h-4 w-4 text-[#8f87ff]" />
-          </div>
-          <Badge className="mt-5">Foundation ready</Badge>
-          <h2 className="mt-4 text-lg font-medium text-zinc-300">
-            This space is ready to grow with you.
-          </h2>
-          <p className="mt-2 max-w-md text-xs leading-5 text-zinc-600">
-            {futureNote}
-          </p>
-        </Card>
-      )}
+      <Card className="mt-4 flex min-h-[280px] flex-col items-center justify-center border-dashed bg-[#0e0e13] px-6 text-center">
+        <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/[.07] bg-white/[.035]">
+          <Sparkles className="h-4 w-4 text-[#8f87ff]" />
+        </div>
+        <Badge className="mt-5">Foundation ready</Badge>
+        <h2 className="mt-4 text-lg font-medium text-zinc-300">
+          This space is ready to grow with you.
+        </h2>
+        <p className="mt-2 max-w-md text-xs leading-5 text-zinc-600">
+          {futureNote}
+        </p>
+      </Card>
     </div>
   );
 }
